@@ -76,8 +76,4 @@ Requirements
 
 The conda environment file is included as:
     environment.yml
-
-License
--------
-
-MIT
+    
