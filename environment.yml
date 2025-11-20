@@ -1,0 +1,20 @@
+name: arxivrec
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11
+  - numpy=1.26
+  - scipy
+  - scikit-learn=1.7
+  - matplotlib
+  - pandas
+  - hnswlib=0.8.0
+  - seaborn
+  - statsmodels
+  - pip
+
+  - pip:
+      - tensorflow==2.15.0
+      - tensorflow-hub==0.13.0
+      - tqdm
