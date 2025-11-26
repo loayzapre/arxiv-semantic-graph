@@ -18,3 +18,5 @@ dependencies:
       - tensorflow==2.15.0
       - tensorflow-hub==0.13.0
       - tqdm
+      - networkx
+      - python-louvain

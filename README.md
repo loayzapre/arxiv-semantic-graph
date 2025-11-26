@@ -84,3 +84,10 @@ Environment
 
 A conda/micromamba environment is provided in:
   environment.yml
+
+Key Python deps (see environment.yml):
+- tensorflow / tensorflow-hub (embeddings)
+- hnswlib (ANN search)
+- scikit-learn (k-means)
+- matplotlib / seaborn (plots)
+- networkx + python-louvain (graph clustering)
