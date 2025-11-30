@@ -1,15 +1,15 @@
 """
 Arxiv Semantic Graph package.
 
-This package contains the logic for:
-- EDA on the Arxiv metadata
-- Embedding abstracts with USE
-- Building and querying an HNSW index
-- Constructing and analysing a semantic graph
-- Graph clustering (Louvain)
-- Simple paper recommendation
+Submodules:
+    - eda
+    - embeddings
+    - hnsw_index
+    - graph
+    - graph_clustering
+    - recommend
 """
 
-from . import eda, embeddings, hnsw_index, graph, graph_clustering, recommend
-
+# Do NOT import the submodules here to avoid circular imports.
 __all__ = ["eda", "embeddings", "hnsw_index", "graph", "graph_clustering", "recommend"]
+
