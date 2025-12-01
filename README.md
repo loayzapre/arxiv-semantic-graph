@@ -90,4 +90,4 @@ Key Python deps (see environment.yml):
 - hnswlib (ANN search)
 - scikit-learn (k-means)
 - matplotlib / seaborn (plots)
-- networkx + python-louvain (graph clustering)
+- networkx (graph clustering)

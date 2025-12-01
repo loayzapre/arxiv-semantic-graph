@@ -10,7 +10,8 @@ import json
 from typing import Dict, Any
 
 import networkx as nx
-from community import community_louvain
+from networkx.algorithms.community import louvain_communities
+from networkx.algorithms.community.quality import modularity
 
 
 def run_louvain(
@@ -42,11 +43,12 @@ def run_louvain(
         print("[Louvain] No edges found; skipping clustering.")
         result = {"modularity": None, "num_communities": 0}
     else:
-        partition = community_louvain.best_partition(G, weight="weight")
-        modularity = community_louvain.modularity(partition, G, weight="weight")
-        num_communities = len(set(partition.values()))
+        comms = louvain_communities(G, weight="weight", seed=42)
+        partition = {node: idx for idx, nodes in enumerate(comms) for node in nodes}
+        mod = modularity(G, comms, weight="weight")
+        num_communities = len(comms)
 
-        print(f"[Louvain] Modularity = {modularity:.4f}")
+        print(f"[Louvain] Modularity = {mod:.4f}")
         print(f"[Louvain] Communities found = {num_communities}")
 
         # Save full partition mapping (node -> community) to disk
@@ -59,7 +61,7 @@ def run_louvain(
 
         # Also write a short human-readable summary
         summary = {
-            "modularity": modularity,
+            "modularity": mod,
             "num_communities": num_communities,
             "edges": G.number_of_edges(),
             "nodes": G.number_of_nodes(),
@@ -70,7 +72,7 @@ def run_louvain(
         print(f"[Louvain] Summary saved to {summary_path}")
 
         result = {
-            "modularity": modularity,
+            "modularity": mod,
             "num_communities": num_communities,
         }
 
