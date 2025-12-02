@@ -51,6 +51,9 @@ def setup_environment(use_gpu: bool, vram_mib: int):
     os.environ["QT_QPA_PLATFORM"] = "offscreen"
     os.environ["TF_GPU_ALLOCATOR"] = "cuda_malloc_async"
 
+    # OJO: esto se ejecuta después de importar tensorflow, así que
+    # CUDA_VISIBLE_DEVICES aquí no cambia qué ve TF en este proceso.
+    # Sirve más para procesos hijos; lo dejamos por compatibilidad.
     if use_gpu:
         os.environ.pop("CUDA_VISIBLE_DEVICES", None)
     else:
@@ -59,17 +62,20 @@ def setup_environment(use_gpu: bool, vram_mib: int):
     gpus = tf.config.list_physical_devices("GPU")
     if use_gpu and gpus:
         try:
-            for g in gpus:
-                tf.config.experimental.set_memory_growth(g, True)
+            # SOLO configuramos un logical device con límite de memoria
             tf.config.set_logical_device_configuration(
-                gpus[0], [tf.config.LogicalDeviceConfiguration(memory_limit=vram_mib)]
+                gpus[0],
+                [tf.config.LogicalDeviceConfiguration(memory_limit=vram_mib)]
             )
-            print(f"[GPU] Using logical GPU capped at ~{vram_mib} MiB")
+            logical_gpus = tf.config.list_logical_devices("GPU")
+            print(f"[GPU] Using logical GPU(s): {[d.name for d in logical_gpus]} "
+                  f"with ~{vram_mib} MiB each")
         except Exception as e:
-            print(f"[GPU] Config failed, falling back to CPU: {e}")
-            os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+            # No decimos "fallback to CPU" porque la GPU podría seguir usable
+            print(f"[GPU] Could not set memory limit, using default config: {e}")
     else:
-        print("[CPU] Running without GPU")
+        print("[CPU] Running without GPU (or no GPU detected)")
+
 
 
 # -------------------- IO & STREAM HELPERS -----------------------

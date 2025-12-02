@@ -1,21 +1,30 @@
-name: arxivrec
+name: arxiv
 channels:
   - conda-forge
+  - defaults
 
 dependencies:
   - python=3.11
-  - numpy=1.26
-  - scipy
-  - scikit-learn=1.7
-  - matplotlib
-  - pandas
-  - hnswlib=0.8.0
-  - seaborn
-  - statsmodels
   - pip
 
+  # Core scientific stack
+  - numpy
+  - pandas
+  - matplotlib
+  - jupyter
+  - ipykernel
+
+  # Utils
+  - tqdm
+  - h5py
+  - networkx
+
+  # Para tu flujo con notebooks y gráficos
+  - seaborn
+
+  # Guaranteed compatible TF build via pip
   - pip:
       - tensorflow==2.15.0
-      - tensorflow-hub==0.13.0
-      - tqdm
-      - networkx
+      - tensorflow-hub==0.16.1
+      - tensorflow-text==2.15.0
+      - hnswlib==0.8.0

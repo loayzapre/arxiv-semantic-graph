@@ -154,9 +154,7 @@ def plot_year_distribution(
 
     if show:
         plt.show()
-
     plt.close()
-
 
 def plot_length_distribution(
     lengths: np.ndarray,
@@ -179,5 +177,4 @@ def plot_length_distribution(
 
     if show:
         plt.show()
-
     plt.close()
