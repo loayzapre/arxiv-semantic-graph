@@ -87,6 +87,7 @@ def id_to_meta(global_id: int, emb_paths: Sequence[str], emb_dir: Path) -> Tuple
 def build_or_load_index(emb_paths: Sequence[str], dim: int, out_dir: Path, 
                         efc: int = 200, M: int = 16, threads: int = 8):
     """Build or load HNSW index from embedding shards."""
+    out_dir.mkdir(parents=True, exist_ok=True)
     index_path = out_dir / "hnsw.index"
     index = hnswlib.Index(space="cosine", dim=dim)
     
