@@ -54,7 +54,6 @@ Pipeline Overview
      titles, distances, and community assignments.
 
 Project Layout
---------------
 
 src/arxiv_semantic_graph/
   eda.py             – EDA utilities (loading, statistics, plots)
@@ -79,7 +78,6 @@ outputs/
   louvain/
 
 Environment
------------
 
 A conda/micromamba environment is provided in:
   environment.yml
