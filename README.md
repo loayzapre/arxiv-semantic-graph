@@ -53,29 +53,32 @@ Pipeline Overview
    - As a demo, select a paper and recommend its nearest neighbours, reporting
      titles, distances, and community assignments.
 
-PPROJECT LAYOUT
+PROJECT LAYOUT
+-----------------
 
 src/arxiv_semantic_graph/
-eda.py - EDA utilities (loading, statistics, plots)
-embeddings.py - USE embeddings in shards
-graph.py - distance histogram, graph construction, graph statistics
-graph_clustering.py - Louvain clustering and modularity
-recommend.py - simple recommendation based on HNSW + Louvain
-pipeline.py - old code
+  eda.py - EDA utilities (loading, statistics, plots)
+  embeddings.py - USE embeddings in shards
+  graph.py - distance histogram, graph construction, graph statistics
+  graph_clustering.py - Louvain clustering and modularity
+  recommend.py - simple recommendation based on HNSW + Louvain
+  pipeline.py - old code
 
 notebooks/
-project_demo.ipynb - main notebook that calls the functions above and visualises the results
+  project_demo.ipynb - main notebook that calls the functions above and visualises the results
 
 data/
-arxiv-metadata-oai-snapshot.json (not included; must be downloaded separately)
-Download from: https://www.kaggle.com/datasets/Cornell-University/arxiv/data
+  arxiv-metadata-oai-snapshot.json - not included; must be downloaded separately
+  Download from: https://www.kaggle.com/datasets/Cornell-University/arxiv/data
 
 outputs/
-eda/
-embeddings/
-hnsw/
-graphs/
-louvain/
+  eda/
+  embeddings/
+  hnsw/
+  graphs/
+  louvain/
 
-Environment:
+
+Environment
+-----------------
 A conda/micromamba environment is provided in: environment.yml
