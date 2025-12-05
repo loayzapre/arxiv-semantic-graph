@@ -59,35 +59,27 @@ Project Layout
 src/arxiv_semantic_graph/
   eda.py             – EDA utilities (loading, statistics, plots)
   embeddings.py      – USE embeddings in shards
-  hnsw_index.py      – build/load HNSW index
   graph.py           – distance histogram, graph construction, graph stats
   graph_clustering.py – Louvain clustering and modularity
   recommend.py       – simple recommendation based on HNSW + Louvain
+  pipeline.py        - old code
 
 notebooks/
   project_demo.ipynb – main notebook that calls the functions above and
                        visualises the results
 
 data/
-  arxiv-metadata-oai-snapshot.json  (not included; must be downloaded separately)
+  arxiv-metadata-oai-snapshot.json  (not included; must be downloaded separately) from https://www.kaggle.com/datasets/Cornell-University/arxiv/data
 
 outputs/
   eda/
   embeddings/
   hnsw/
   graphs/
-  clustering/
-  recommendations/
+  louvain/
 
 Environment
 -----------
 
 A conda/micromamba environment is provided in:
   environment.yml
-
-Key Python deps (see environment.yml):
-- tensorflow / tensorflow-hub (embeddings)
-- hnswlib (ANN search)
-- scikit-learn (k-means)
-- matplotlib / seaborn (plots)
-- networkx (graph clustering)
