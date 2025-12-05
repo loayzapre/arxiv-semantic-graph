@@ -72,7 +72,7 @@ data/
 - arxiv-metadata-oai-snapshot.json - not included; must be downloaded separately
 - Download from: https://www.kaggle.com/datasets/Cornell-University/arxiv/data
 
-outputs/
+outputs/ - created by the notebook, listed in .gitignore
 - eda/
 - embeddings/
 - hnsw/
