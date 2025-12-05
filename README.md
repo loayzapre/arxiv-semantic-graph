@@ -55,40 +55,29 @@ Pipeline Overview
 
 PROJECT LAYOUT
 -----------------
+PROJECT LAYOUT
 
 src/arxiv_semantic_graph/
-• eda.py – EDA utilities (loading, statistics, plots)
-• embeddings.py – USE embeddings in shards
-• graph.py – distance histogram, graph construction, graph statistics
-• graph_clustering.py – Louvain clustering and modularity
-• recommend.py – simple recommendation based on HNSW + Louvain
-• pipeline.py – old code
-
-<br>
+- eda.py - EDA utilities (loading, statistics, plots)
+- embeddings.py - USE embeddings in shards
+- graph.py - distance histogram, graph construction, graph statistics
+- graph_clustering.py - Louvain clustering and modularity
+- recommend.py - simple recommendation based on HNSW + Louvain
+- pipeline.py - old code
 
 notebooks/
-• project_demo.ipynb – main notebook that calls the functions above and visualises the results
-
-<br>
+- project_demo.ipynb - main notebook that calls the functions above and visualises the results
 
 data/
-• arxiv-metadata-oai-snapshot.json – not included; must be downloaded separately
-Download from: https://www.kaggle.com/datasets/Cornell-University/arxiv/data
-
-<br>
+- arxiv-metadata-oai-snapshot.json - not included; must be downloaded separately
+- Download from: https://www.kaggle.com/datasets/Cornell-University/arxiv/data
 
 outputs/
-• eda/
-• embeddings/
-• hnsw/
-• graphs/
-• louvain/
-
-<br>
-
-Environment:
-A conda/micromamba environment is provided in: environment.yml
-
+- eda/
+- embeddings/
+- hnsw/
+- graphs/
+- louvain/
 
 Environment
 -----------------
